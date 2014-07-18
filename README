@@ -1,0 +1,23 @@
+
+Work in progress, just a bare beginning.
+
+GPLv3
+
+Monty is a language ahead of Python.
+
+A preprocessor, generating Python language.
+
+Monty is much simpler than Python:
+- no self
+- only objects, no functions (only methods)
+- no globals in the language (only attributes of a programmer defined global object, if necessary)
+- less syntactic sugar and more visual: program structure by indentation and blank lines
+-- no ';'
+-- no 'class' keyword
+-- no parens for superclasses
+-- etc.
+- no need to import (inferred, with disambiguation in a separate file if necessary.)
+
+In other words, the object-oriented parts of Python, without the procedural programming parts
+
+Inspired by Eiffel, Smalltalk, Lisp
