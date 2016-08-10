@@ -3,34 +3,37 @@ Created on 17/07/2014
 
 @author: bootch
 '''
-from offSider import OffSider
+from transform import transform
 #from shlex import shlex
 
 
-from pyparsing import Word, alphas, OneOrMore, ParserElement, LineEnd # White, 
 
-# newlines are significant to grammar
-ParserElement.setDefaultWhitespaceChars(" \t")
-
-'''
-grammar
-'''
-NL = '\n'
-NL = LineEnd()
-# NL = White('\n').suppress()
-className = Word( alphas ) + NL
-classBody = "{" + className + LineEnd() + className + LineEnd() + className + "}"
-classDef =  className + classBody  # "," + Word( alphas ) + "!" 
-#Group( element + Optional( Word( digits ), default="1" ) )
-module = OneOrMore( classDef )
-
+# test cases
 
 text = r"""foo
+  superclass
   superclass
   
   state
   
   method"""
+  
+" no superclasses: blank line"
+text1 = r"""foo
+  
+  
+  state
+  state2
+  
+  method"""
+
+" no superclasses or methods: blank lines"
+text2 = r"""foo
+  
+  
+  state
+  state2
+"""
 
 invalidIndentationText = r"""
 foo
@@ -41,13 +44,9 @@ foo
   method
  err"""
 
-# Convert indented text to braced text
-offSider = OffSider()
-bracedText = ''
-for line in offSider.parse(text):
-  bracedText += line
-  
-print(bracedText)
-      
-print(module.parseString(bracedText))
+
+
+print(text)      
+result = transform(text2)
+print(result)
 

@@ -22,8 +22,8 @@ class OffSider(object):
     for line in text.split('\n'):
       
       leadingSpaceCount, remainder = self._countLeadingSpacesIn(line)
-      if not line or len(remainder) == 0: 
-        " Line is empty, i.e. consecutive newlines or all whitespace.  No effect on indentation. "
+      if not line:  # or len(remainder) == 0: 
+        " Line is empty, i.e. consecutive newlines.  No effect on indentation. "
         yield('\n')
       else:
         " Line not empty"    
